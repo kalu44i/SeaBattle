@@ -26,8 +26,8 @@ public class Field {
 		loadShips();
 	}
 
-	public ArrayList<Cell> getCells() {
-		return (ArrayList<Cell>) cells;
+	public List<Cell> getCells() {
+		return cells;
 	}
 
 	/***************************************************
@@ -64,26 +64,36 @@ public class Field {
 		int x = cell.getX();
 		int y = cell.getY();
 		ArrayList<Cell> cellsNear = new ArrayList<Cell>(8);
+		
+		
+		
 		for (int j = 0; j < cells.size(); j++) {
-			if (cells.get(j).getX() == x - 1 && cells.get(j).getY() == y - 1) {
-				cellsNear.add(cells.get(j));
-			} else if (cells.get(j).getX() == x && cells.get(j).getY() == y - 1) {
-				cellsNear.add(cells.get(j));
-			} else if (cells.get(j).getX() == x + 1
-			        && cells.get(j).getY() == y - 1) {
-				cellsNear.add(cells.get(j));
-			} else if (cells.get(j).getX() == x + 1 && cells.get(j).getY() == y) {
-				cellsNear.add(cells.get(j));
-			} else if (cells.get(j).getX() == x + 1
-			        && cells.get(j).getY() == y + 1) {
-				cellsNear.add(cells.get(j));
-			} else if (cells.get(j).getX() == x && cells.get(j).getY() == y + 1) {
-				cellsNear.add(cells.get(j));
-			} else if (cells.get(j).getX() == x - 1
-			        && cells.get(j).getY() == y + 1) {
-			} else if (cells.get(j).getX() == x - 1 && cells.get(j).getY() == y) {
-				cellsNear.add(cells.get(j));
+			
+			for (int xX = -1; xX <= 1; xX++) {
+				for (int yY = -1; yY <= 1; yY++)
+				if (cells.get(j).getX() == x + xX
+				        && cells.get(j).getY() == y + yY)
+					cellsNear.add(cells.get(j));
 			}
+//			if (cells.get(j).getX() == x - 1 && cells.get(j).getY() == y - 1) {
+//				cellsNear.add(cells.get(j));
+//			} else if (cells.get(j).getX() == x && cells.get(j).getY() == y - 1) {
+//				cellsNear.add(cells.get(j));
+//			} else if (cells.get(j).getX() == x + 1
+//			        && cells.get(j).getY() == y - 1) {
+//				cellsNear.add(cells.get(j));
+//			} else if (cells.get(j).getX() == x + 1 && cells.get(j).getY() == y) {
+//				cellsNear.add(cells.get(j));
+//			} else if (cells.get(j).getX() == x + 1
+//			        && cells.get(j).getY() == y + 1) {
+//				cellsNear.add(cells.get(j));
+//			} else if (cells.get(j).getX() == x && cells.get(j).getY() == y + 1) {
+//				cellsNear.add(cells.get(j));
+//			} else if (cells.get(j).getX() == x - 1
+//			        && cells.get(j).getY() == y + 1) {
+//			} else if (cells.get(j).getX() == x - 1 && cells.get(j).getY() == y) {
+//				cellsNear.add(cells.get(j));
+//			}
 		}
 		for (Cell c : cellsNear) {
 			if (c.gethasShip()) {
