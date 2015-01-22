@@ -148,9 +148,7 @@ public class Field {
 
 	private Ship loadShip(int size) {
 		Ship ship = createShip(size);
-
-		change_Cell_HasShip_Status(ship);
-		change_Cell_NeighborShipCell_Status(ship);
+		cellStatusChange(ship);
 		return ship;
 	}
 
@@ -335,15 +333,7 @@ public class Field {
 		return null;
 	}
 
-	/*******************************************
-	 * 
-	 * @param cell
-	 *******************************************/
-	private void change_Cell_HasShip_Status(Ship ship) {
-		for (int i = 0; i < ship.getSizeOfShip(); i++) {
-			ship.getCellsOfShip().get(i).setHasShip();
-		}
-	}
+
 
 	/*********************************************
 	 * The method change "isNeihbourShipCell" of a Parameter to True, that is
@@ -351,10 +341,13 @@ public class Field {
 	 * 
 	 * @param cell
 	 *********************************************/
-	private void change_Cell_NeighborShipCell_Status(Ship ship) {
+	private void cellStatusChange(Ship ship) {
+		
 		for (int i = 0; i < ship.getSizeOfShip(); i++) {
-			int x = ship.getCellsOfShip().get(i).getX();
-			int y = ship.getCellsOfShip().get(i).getY();
+			Cell cellOfShip = ship.getCellsOfShip().get(i);
+			cellOfShip.setHasShip();
+			int x = cellOfShip.getX();
+			int y = cellOfShip.getY();
 			for (int j = 0; j < cells.size(); j++) {
 
 
