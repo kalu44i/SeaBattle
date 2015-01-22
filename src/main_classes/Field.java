@@ -1,4 +1,5 @@
 package main_classes;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -355,32 +356,43 @@ public class Field {
 			int x = ship.getCellsOfShip().get(i).getX();
 			int y = ship.getCellsOfShip().get(i).getY();
 			for (int j = 0; j < cells.size(); j++) {
-				if (cells.get(j).getX() == x - 1
-				        && cells.get(j).getY() == y - 1) {
-					cells.get(j).setNeighborShipCell();
-				} else if (cells.get(j).getX() == x
-				        && cells.get(j).getY() == y - 1) {
-					cells.get(j).setNeighborShipCell();
-				} else if (cells.get(j).getX() == x + 1
-				        && cells.get(j).getY() == y - 1) {
-					cells.get(j).setNeighborShipCell();
-				} else if (cells.get(j).getX() == x + 1
-				        && cells.get(j).getY() == y) {
-					cells.get(j).setNeighborShipCell();
-				} else if (cells.get(j).getX() == x + 1
-				        && cells.get(j).getY() == y + 1) {
-					cells.get(j).setNeighborShipCell();
-				} else if (cells.get(j).getX() == x
-				        && cells.get(j).getY() == y + 1) {
-					cells.get(j).setNeighborShipCell();
-				} else if (cells.get(j).getX() == x - 1
-				        && cells.get(j).getY() == y + 1) {
-					cells.get(j).setNeighborShipCell();
-				} else if (cells.get(j).getX() == x - 1
-				        && cells.get(j).getY() == y) {
-					cells.get(j).setNeighborShipCell();
+
+
+				for (int xX = -1; xX <= 1; xX++) {
+					for (int yY = -1; yY <= 1; yY++)
+					if (cells.get(j).getX() == x + xX
+					        && cells.get(j).getY() == y + yY)
+						cells.get(j).setNeighborShipCell();
 				}
+
+//				if (cells.get(j).getX() == x - 1
+//				        && cells.get(j).getY() == y - 1) {
+//					cells.get(j).setNeighborShipCell();
+//				} else if (cells.get(j).getX() == x
+//				        && cells.get(j).getY() == y - 1) {
+//					cells.get(j).setNeighborShipCell();
+//				} else if (cells.get(j).getX() == x + 1
+//				        && cells.get(j).getY() == y - 1) {
+//					cells.get(j).setNeighborShipCell();
+//				} else if (cells.get(j).getX() == x + 1
+//				        && cells.get(j).getY() == y) {
+//					cells.get(j).setNeighborShipCell();
+//				} else if (cells.get(j).getX() == x + 1
+//				        && cells.get(j).getY() == y + 1) {
+//					cells.get(j).setNeighborShipCell();
+//				} else if (cells.get(j).getX() == x
+//				        && cells.get(j).getY() == y + 1) {
+//					cells.get(j).setNeighborShipCell();
+//				} else if (cells.get(j).getX() == x - 1
+//				        && cells.get(j).getY() == y + 1) {
+//					cells.get(j).setNeighborShipCell();
+//				} else if (cells.get(j).getX() == x - 1
+//				        && cells.get(j).getY() == y) {
+//					cells.get(j).setNeighborShipCell();
+//				}
 			}
+			// }
+
 		}
 	}
 
@@ -449,11 +461,11 @@ public class Field {
 	/********************************************
 	 * change status of the ships if some of them are dead
 	 ********************************************/
-//	public void changeShipsStatus() {
-//		for (Ship s : ships) {
-//			s.liveStatus();
-//		}
-//	}
+	// public void changeShipsStatus() {
+	// for (Ship s : ships) {
+	// s.liveStatus();
+	// }
+	// }
 
 	/********************************************
 	 * change status of the ships if some of them are dead
@@ -468,7 +480,7 @@ public class Field {
 		}
 		return false;
 	}
-	
+
 	public int livedShips() {
 		int livedShips = 10;
 		for (int i = 0; i < ships.size(); i++) {
@@ -477,15 +489,16 @@ public class Field {
 			}
 		}
 		return livedShips;
-		
+
 	}
+
 	public boolean hasDeadAfterStep() {
 		for (int i = 0; i < ships.size(); i++) {
-			
+
 		}
 		return false;
 	}
-	
+
 	void hitCellsAroundShip() {
 		for (int i = 0; i < ships.size(); i++) {
 			if (!ships.get(i).isLive()) {
@@ -523,8 +536,6 @@ public class Field {
 			}
 		}
 	}
-	
-
 
 	/**************************************************
 	 * Tested methods
