@@ -131,25 +131,27 @@ public class Field {
 
 	private boolean checkNextCell(Cell head, int direction) {
 		boolean freeDirection = false;
+		int x = head.getX();
+		int y = head.getY();
 
 		if (direction == 1
-		        && !findCell(head.getX() + 1, head.getY()).gethasShip()
-		        && !findCell(head.getX() + 1, head.getY())
+		        && !findCell(x + 1, y).gethasShip()
+		        && !findCell(x + 1, y)
 		                .getNeighborShipCell() && head.getX() < 10) {
 			freeDirection = true;
 		} else if (direction == 2
-		        && !findCell(head.getX(), head.getY() + 1).gethasShip()
-		        && !findCell(head.getX(), head.getY() + 1)
+		        && !findCell(x, y + 1).gethasShip()
+		        && !findCell(x, y + 1)
 		                .getNeighborShipCell() && head.getY() < 10) {
 			freeDirection = true;
 		} else if (direction == 3
-		        && !findCell(head.getX() - 1, head.getY()).gethasShip()
-		        && !findCell(head.getX() - 1, head.getY())
+		        && !findCell(x - 1, y).gethasShip()
+		        && !findCell(x - 1, y)
 		                .getNeighborShipCell() && head.getX() > 1) {
 			freeDirection = true;
 		} else if (direction == 4
-		        && !findCell(head.getX(), head.getY() - 1).gethasShip()
-		        && !findCell(head.getX(), head.getY() - 1)
+		        && !findCell(x, y - 1).gethasShip()
+		        && !findCell(x, y - 1)
 		                .getNeighborShipCell() && head.getY() > 1) {
 			freeDirection = true;
 		}

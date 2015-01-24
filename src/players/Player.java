@@ -1,5 +1,8 @@
 package players;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import main_classes.Cell;
@@ -18,21 +21,23 @@ public class Player extends PlayerAbstract {
 	 * @param x
 	 * @param y
 	 * @return true if a player hit ship, false if not
+	 * @throws NumberFormatException 
+	 * @throws IOException 
 	 *****************************************/
 
-	public boolean step() {
+	public boolean step() throws NumberFormatException, IOException {
 		boolean hit = false;
 		Cell cell = field.findCell(0, 0);
 		
-		Scanner in = new Scanner(System.in);
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 		
 		boolean notShutedCell = false;
 
 		while (!notShutedCell) {
 			System.out.print("Put X coordinate: ");
-			int x = in.nextInt();
+			int x = Integer.parseInt(bufferedReader.readLine());
 			System.out.print("Put Y coordinate: ");
-			int y = in.nextInt();
+			int y = Integer.parseInt(bufferedReader.readLine());
 
 			cell = field.findCell(x, y);
 			if (cell.getHitted()) {

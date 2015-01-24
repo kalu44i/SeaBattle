@@ -1,6 +1,8 @@
 package players;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import main_classes.Cell;
 import main_classes.Field;
@@ -22,7 +24,7 @@ public abstract class PlayerAbstract {
 		return name;
 	}
 	
-	public boolean step() {
+	public boolean step() throws NumberFormatException, IOException {
 		return true;
 	}
 	
@@ -39,7 +41,7 @@ public abstract class PlayerAbstract {
 					Cell cell = ship.getCellsOfShip().get(size);
 					int x = cell.getX();
 					int y = cell.getY();
-					ArrayList<Cell> cells = field.getCells();
+					List<Cell> cells = field.getCells();
 					for (int j = 0; j < cells.size(); j++) {
 						if (cell.getX() == x - 1
 						        && cells.get(j).getY() == y - 1) {
